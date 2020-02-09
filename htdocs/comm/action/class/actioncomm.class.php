@@ -1404,6 +1404,13 @@ class ActionComm extends CommonObject
             $option = 'nolink';
 		}
 
+                // If we are in the userassigned we make it clickable
+                if($classname == 'cal_event') {
+                  foreach($this->userassigned as $assigned_user) {
+                    if ($assigned_user['id'] == $user->id) $option = '';
+                  }
+                }
+
         $label = $this->label;
 		if (empty($label)) $label = $this->libelle; // For backward compatibility
 
